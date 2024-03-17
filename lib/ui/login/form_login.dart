@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notiauto_system/ui/home/home_widget.dart';
 import 'package:notiauto_system/ui/home/home_page.dart';
 import 'package:notiauto_system/ui/registro/regristro_page.dart';
 
@@ -98,7 +99,7 @@ class _FormLoginState extends State<FormLogin> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
+                                  builder: (context) => HomePage()));
                         },
                         child: Text('Iniciar Sesion',
                             style: TextStyle(fontSize: 20.0)),
