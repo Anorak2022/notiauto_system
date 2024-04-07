@@ -17,12 +17,11 @@ class _HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // barra superior
-      appBar: AppBar(title: const Text("NotiAutoSystem")),
+      appBar: AppBar(backgroundColor:Color(0xFF9CAFAA),
+      title: const Text("NotiAutoSystem")),
 
-      backgroundColor: const Color.fromARGB(255, 223, 201, 143),
+      backgroundColor:Color(0xFFFBF3D5),
 
-      // barra inferior
-      // https://www.youtube.com/watch?v=leA2nZYM9jY&list=PLRGDnb6LspvdEBxIbPMgQBOdr2zctSqRS
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: (index) {},
