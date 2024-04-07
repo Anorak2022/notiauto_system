@@ -35,38 +35,43 @@ class _Form_IngresoAutosState extends State<Form_IngresoAutos> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 223, 201, 143),
-      body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 75.0),
-          children: <Widget>[
-            Text(
-              'Formulario de Ingreso de Vehiculo',
-              style: TextStyle(fontFamily: 'Arial', fontSize: 25.0),
-            ),
-            Divider(
-              height: 35.0,
-            ),
-            _placaVehiculo(),
-            Divider(height: 20.0),
-            // _MarcaHorizontal(),
-            // Divider(
-            //    height: 35.0,
-            //   ),
-            _TrabajoHorizontal(),
-            Divider(
-              height: 35.0,
-            ),
-
-            _CostoServicio(),
-            Divider(
-              height: 35.0,
-            ),
-
-            _Comentarios(),
-            Divider(
-              height: 35.0,
-            ),
-            _Guardar()
-          ]),
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 600),
+          child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 75.0),
+              children: <Widget>[
+                Text(
+                  'Formulario de Ingreso de Vehiculo',
+                  style: TextStyle(fontFamily: 'Arial', fontSize: 25.0),
+                ),
+                Divider(
+                  height: 35.0,
+                ),
+                _placaVehiculo(),
+                Divider(height: 20.0),
+                // _MarcaHorizontal(),
+                // Divider(
+                //    height: 35.0,
+                //   ),
+                _TrabajoHorizontal(),
+                Divider(
+                  height: 35.0,
+                ),
+          
+                _CostoServicio(),
+                Divider(
+                  height: 35.0,
+                ),
+          
+                _Comentarios(),
+                Divider(
+                  height: 35.0,
+                ),
+                _Guardar()
+              ]),
+        ),
+      ),
     );
   }
 
