@@ -5,28 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
-            "request": "launch",
-            "type": "chrome",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "name": "notiauto_system",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "notiauto_system (profile mode)",
-            "request": "launch",
+            "name": "Flutter for web",
             "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "notiauto_system (release mode)",
             "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
+            "program": "lib/main.dart",
+            "args": [
+              "-d",
+              "chrome"
+            ]
         }
     ]
 }
