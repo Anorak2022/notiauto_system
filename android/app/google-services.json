@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "67027279981",
+    "firebase_url": "https://notiauto-94ee9-default-rtdb.firebaseio.com",
+    "project_id": "notiauto-94ee9",
+    "storage_bucket": "notiauto-94ee9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67027279981:android:73d498b864ea7428aadf64",
+        "android_client_info": {
+          "package_name": "com.example.notiauto_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACS1IHoNMIXj312Kvf0iVTmqhA6nwxARg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
