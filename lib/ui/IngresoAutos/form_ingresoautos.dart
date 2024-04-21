@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:notiauto_system/ui/home/home_page.dart';
 
 class Form_IngresoAutos extends StatefulWidget {
   const Form_IngresoAutos({super.key});
@@ -213,15 +214,28 @@ class _Form_IngresoAutosState extends State<Form_IngresoAutos> {
         TextButton(
             style: TextButton.styleFrom(
                 foregroundColor: const Color.fromARGB(255, 206, 94, 86)),
-            onPressed: () {},
+            onPressed: () {
+              print("go to page");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+            },
             child: Text(
               'Guardar',
               style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+              
             )),
         TextButton(
             style: TextButton.styleFrom(
                 foregroundColor: const Color.fromARGB(255, 206, 94, 86)),
-            onPressed: () {},
+            onPressed: () {
+              print("go to page");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+            },
             child: Text(
               'Salir',
               style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),

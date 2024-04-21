@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:notiauto_system/ui/home/home_widget.dart';
 import 'package:notiauto_system/ui/home/home_page.dart';
@@ -10,16 +11,24 @@ class FormLogin extends StatefulWidget {
   State<FormLogin> createState() => _FormLoginState();
 }
 
+
+
 class _FormLoginState extends State<FormLogin> {
   String _correo = '';
   String _password = '';
+  
+
+  
 
   @override
   Widget build(BuildContext context) {
+    final db = FirebaseFirestore.instance;
+    final doc = db.doc("/test/MMxUJFAVTQHb691SrBwa");
+
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 223, 201, 143),
         body: Center(
-          child: Container(
+           child: Container(
             constraints: const BoxConstraints(maxWidth: 400),
             child: ListView(
               padding:
@@ -126,6 +135,7 @@ class _FormLoginState extends State<FormLogin> {
               ],
             ),
           ),
+         
         ));
   }
 }
