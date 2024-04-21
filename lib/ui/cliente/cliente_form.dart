@@ -16,8 +16,9 @@ class _ClienteFormState extends State<ClienteForm> {
   TextEditingController telefonoController = TextEditingController();
 
   // Variables para los dropdowns
-  String departamentoSeleccionado = "San Salvador";
+  String nombre = "";
   List<String> departamentos = ['San Salvador', 'Santa Ana', 'San Miguel'];
+  String? selectitem = 'San Salvador';
 
   String municipioSeleccionado = "San Salvador";
   List<String> municipios = [];
@@ -43,79 +44,190 @@ class _ClienteFormState extends State<ClienteForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                TextFormField(
-                  controller: nombreController,
-                  decoration: InputDecoration(labelText: 'Nombre'),
+                Text(
+                  'Registro y Mantenimeinto de Clientes',
+                  style: TextStyle(fontFamily: 'calibri', fontSize: 30.0),
                 ),
-                TextFormField(
-                  controller: duiController,
-                  decoration: InputDecoration(labelText: 'DUI'),
+                Divider(
+                  height: 40.0,
                 ),
-                TextFormField(
-                  controller: direccionController,
-                  decoration: InputDecoration(labelText: 'Dirección'),
-                ),
-                DropdownButtonFormField(
-                  value: departamentoSeleccionado,
-                  onChanged: (value) {
-                    setState(() {
-                      departamentoSeleccionado = value!;
-                      municipioSeleccionado = municipiosPorDepartamento[value]![0];
-                      municipios = municipiosPorDepartamento[value]!;
-                    });
+                TextField(
+                  enableIMEPersonalizedLearning: false,
+                  obscureText: true,
+                  autofocus: true,
+                  textCapitalization: TextCapitalization.characters,
+                  decoration: InputDecoration(
+                      hintText: 'Nombre',
+                      labelText: 'Ingrese su Nombre:',
+                      suffixIcon: Icon(Icons.account_circle_outlined),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
+                  onSubmitted: (valor) {
+                    nombre = valor;
+                    print('El Password es: $nombre');
                   },
-                  items: departamentos.map((departamento) {
-                    return DropdownMenuItem(
-                      value: departamento,
-                      child: Text(departamento),
-                    );
-                  }).toList(),
-                  decoration: InputDecoration(labelText: 'Departamento'),
                 ),
-                DropdownButtonFormField(
-                  value: municipioSeleccionado,
-                  onChanged: (value) {
-                    setState(() {
-                      municipioSeleccionado = value!;
-                    });
+                Divider(
+                  height: 10.0,
+                ),
+                TextField(
+                  enableIMEPersonalizedLearning: false,
+                  obscureText: true,
+                  autofocus: true,
+                  textCapitalization: TextCapitalization.characters,
+                  decoration: InputDecoration(
+                      hintText: 'DUI',
+                      labelText: 'Ingrese su DUI:',
+                      suffixIcon: Icon(Icons.numbers),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
+                  onSubmitted: (valor) {
+                    nombre = valor;
+                    print('El Password es: $nombre');
                   },
-                  items: municipiosPorDepartamento[departamentoSeleccionado]!
-                      .map((municipio) {
-                    return DropdownMenuItem(
-                      value: municipio,
-                      child: Text(municipio),
-                    );
-                  }).toList(),
-                  decoration: InputDecoration(labelText: 'Municipio'),
                 ),
-                TextFormField(
-                  controller: correoController,
-                  decoration: InputDecoration(labelText: 'Correo'),
+                Divider(
+                  height: 10,
                 ),
-                TextFormField(
-                  controller: telefonoController,
-                  decoration: InputDecoration(labelText: 'Teléfono'),
-                ),
-                SizedBox(height: 20.0),
-                ElevatedButton(
-                  onPressed: () {
-                    // Aquí puedes manejar los datos ingresados por el usuario
-                    // Por ejemplo, puedes imprimirlos en la consola
-                    print('Nombre: ${nombreController.text}');
-                    print('DUI: ${duiController.text}');
-                    print('Dirección: ${direccionController.text}');
-                    print('Departamento: $departamentoSeleccionado');
-                    print('Municipio: $municipioSeleccionado');
-                    print('Correo: ${correoController.text}');
-                    print('Teléfono: ${telefonoController.text}');
+                TextField(
+                  enableIMEPersonalizedLearning: false,
+                  obscureText: true,
+                  autofocus: true,
+                  textCapitalization: TextCapitalization.characters,
+                  decoration: InputDecoration(
+                      hintText: 'Direccion',
+                      labelText: 'Ingrese su direccion:',
+                      suffixIcon: Icon(Icons.maps_home_work),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
+                  onSubmitted: (valor) {
+                    nombre = valor;
+                    print('El Password es: $nombre');
                   },
-                  child: Text('Guardar'),
                 ),
+                _ListaHdepartamentos(),
+                Divider(height: 15.0),
+                _correo(),
+                Divider(height: 15.0),
+                _telefono(),
+                Divider(height: 25.0),
+                _botones()
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  //creacion de dropdownlist
+  Widget _Listadepartamentos() {
+    return DropdownButton(
+      value: selectitem,
+      items: departamentos
+          .map((item) =>
+              DropdownMenuItem<String>(value: item, child: Text(item)))
+          .toList(),
+      onChanged: (item) => setState(() => selectitem = item),
+    );
+  }
+
+  Widget _ListaHdepartamentos() {
+    return Row(
+      children: [
+        Divider(
+          height: 25.0,
+        ),
+        Container(
+          margin: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: Color.fromARGB(255, 93, 87, 172), width: 2.0),
+              borderRadius: BorderRadius.circular(20.0)),
+          child: Text('Selecciona el departamento'),
+        ),
+        _Listadepartamentos()
+      ],
+    );
+  }
+
+  Widget _correo() {
+    return TextField(
+      enableIMEPersonalizedLearning: false,
+      autofocus: true,
+      textCapitalization: TextCapitalization.characters,
+      decoration: InputDecoration(
+          hintText: 'Correo Electronico:',
+          labelText: 'Ingrese correo del cliente:',
+          suffixIcon: Icon(Icons.email),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))),
+      onSubmitted: (valor) {
+        nombre = valor;
+        print('El Correo es: $nombre');
+      },
+    );
+  }
+
+  Widget _telefono() {
+    return TextField(
+      enableIMEPersonalizedLearning: false,
+      autofocus: true,
+      textCapitalization: TextCapitalization.characters,
+      decoration: InputDecoration(
+          hintText: 'Correo Electronico:',
+          labelText: 'Ingrese correo del cliente:',
+          suffixIcon: Icon(Icons.numbers_rounded),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(20.0))),
+      onSubmitted: (valor) {
+        nombre = valor;
+        print('El Correo es: $nombre');
+      },
+    );
+  }
+
+  Widget _botones() {
+    return Row(
+      children: [
+        Expanded(
+            child: ElevatedButton(
+                onPressed: () {
+                  // Aquí puedes manejar los datos ingresados por el usuario
+                  // Por ejemplo, puedes imprimirlos en la consola
+                  print('Nombre: ${nombreController.text}');
+                  print('DUI: ${duiController.text}');
+                  print('Dirección: ${direccionController.text}');
+
+                  print('Municipio: $municipioSeleccionado');
+                  print('Correo: ${correoController.text}');
+                  print('Teléfono: ${telefonoController.text}');
+                },
+                child: Text('Guardar'),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                )))),
+        Expanded(
+            child: ElevatedButton(
+                onPressed: () {
+                  // Aquí puedes manejar los datos ingresados por el usuario
+                  // Por ejemplo, puedes imprimirlos en la consola
+                  print('Nombre: ${nombreController.text}');
+                  print('DUI: ${duiController.text}');
+                  print('Dirección: ${direccionController.text}');
+
+                  print('Municipio: $municipioSeleccionado');
+                  print('Correo: ${correoController.text}');
+                  print('Teléfono: ${telefonoController.text}');
+                },
+                child: Text('Salir'),
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ))))
+      ],
     );
   }
 }
